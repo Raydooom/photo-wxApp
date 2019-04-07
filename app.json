@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/center/center",
+    "pages/hot/hot",
+    "pages/home/home",
+    "pages/classify/classify",
+    "pages/credits/credits",
+    "pages/commentList/commentList",
+    "pages/article/article",
+    "pages/wallpaper/wallpaper",
+    "pages/collect/collect",
+    "pages/commentArticle/commentArticle",
+    "pages/aboutWxApp/aboutWxApp",
+    "pages/aboutDeveloper/aboutDeveloper",
+    "pages/wallpaperShare/wallpaperShare"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "我想学摄影",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#5756c0",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/assets/icons/home.png",
+        "selectedIconPath": "/assets/icons/home_active.png"
+      },
+      {
+        "pagePath": "pages/wallpaper/wallpaper",
+        "text": "精选",
+        "iconPath": "/assets/icons/image.png",
+        "selectedIconPath": "/assets/icons/image_active.png"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "我的",
+        "iconPath": "/assets/icons/center.png",
+        "selectedIconPath": "/assets/icons/center_active.png"
+      }
+    ]
+  }
+}

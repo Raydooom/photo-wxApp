@@ -1,0 +1,7 @@
+<import src="/templates/articleList.wxml" />
+<import src="/templates/loading.wxml" />
+<template wx:if="{{loading}}" is="page-loading" />
+<view class="aritcle-list" wx:if="{{articleList.length > 0}}">
+  <template is="articleList" data="{{articleList}}"></template>
+</view>
+<view class="no-data" wx:else>暂时没有内容哦~</view>

@@ -1,0 +1,36 @@
+<!-- pages/hot/hot.wxml -->
+<import src="/templates/articleList.wxml" />
+<import src="/templates/loading.wxml" />
+<template wx:if="{{loading}}" is="page-loading" />
+<view class="top-title">
+  <text class="main-title">热门推荐</text>
+  <text></text>
+</view>
+<swiper previous-margin="30rpx" duration="300" next-margin="30rpx">
+  <block wx:for="{{bannerList}}" wx:key="{{item.id}}">
+    <swiper-item>
+      <navigator class="swiper-item" url='../article/article?id={{item.id}}'>
+        <image src="{{item.cover_img}}" mode='aspectFill' class="slide-image" />
+        <view class="article-info">
+          <text class="title">{{item.article_title}}</text>
+          <text class="discription">{{item.description}}</text>
+        </view>
+        <view class="main-view">
+          <image src='../../assets/icons/views.png'></image>
+          {{item.views}}
+        </view>
+      </navigator>
+    </swiper-item>
+  </block>
+</swiper>
+<!-- 分类 -->
+<view class="classify {{ fixed ? 'addPadding' : ''}}">
+  <view class="title-warp {{ fixed ? 'fixed' : ''}}">
+    <view class="classify-title">
+      <view wx:for="{{kindList}}" bindtap="changeKind" data-id="{{item.id}}" wx:key="{{item.id}}" class="class-name {{activeKind == item.id ? 'active' : ''}}">{{item.name}}</view>
+    </view>
+  </view>
+  <view class="aritcle-list">
+    <template is="articleList" data="{{articleList}}"></template>
+  </view>
+</view>

@@ -1,0 +1,144 @@
+/**app.wxss**/
+
+/* 模型盒设置 */
+
+view, text, input, textarea, button, navigator, swiper-item {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+navigator:hover {
+  background: none;
+}
+
+/* template 文章列表 */
+
+/* 分类模块 */
+
+.classify {
+  background: #fff;
+}
+
+.classify-title {
+  background: #fff;
+  padding-top: 20rpx;
+  display: flex;
+  flex-wrap: nowrap;
+  border-bottom: 1rpx solid #efefef;
+}
+
+.classify-title .class-name {
+  flex-grow: 1;
+  font-size: 36rpx;
+  text-align: center;
+  color: #666;
+  line-height: 88rpx;
+  border-bottom: 6rpx solid #fff;
+}
+
+.classify-title .class-name.active {
+  color: #5756c0;
+  border-bottom: 6rpx solid #5756c0;
+}
+
+.aritcle-list {
+  padding: 30rpx 18rpx;
+}
+
+.aritcle-list .article-item {
+  margin-bottom: 30rpx;
+  background: #fff;
+  overflow: hidden;
+  /* box-shadow: 4rpx 8rpx 10rpx rgba(0, 0, 0, 0.05); */
+}
+
+.aritcle-list .clover {
+  width: 260rpx;
+  height: 200rpx;
+  float: left;
+  border-radius: 20rpx;
+}
+
+.aritcle-list .article-info {
+  float: left;
+  padding: 0 30rpx;
+  width: 442rpx;
+}
+
+.aritcle-list .article-title {
+  display: block;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #222;
+  line-height: 60rpx;
+  height: 60rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; */
+}
+
+.aritcle-list  .article-des {
+  display: block;
+  font-size: 26rpx;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aritcle-list .article-view {
+  padding-top: 50rpx;
+  font-size: 26rpx;
+  color: #999;
+  vertical-align: middle;
+}
+
+.aritcle-list .article-view image {
+  width: 40rpx;
+  height: 40rpx;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 10rpx;
+}
+
+/* loading动画 */
+
+.loading-warp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  flex-direction: column;
+  background: #efefef;
+}
+
+.loading image {
+  width: 50rpx;
+  height: 50rpx;
+  margin: 0 6rpx;
+  animation: 1s rotate infinite linear;
+}
+
+@keyframes rotate {
+  form {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: 24rpx;
+  color: #666;
+  text-align: center;
+  padding-top: 10rpx;
+}
