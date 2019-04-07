@@ -5,20 +5,20 @@ const {
 const {
   severRequest
 } = require("../../api/index");
+
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    wallpaperList: "",
+    monthStr: ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
+    wallpaperList: [],
     total: 0,
-    activeIndex: 0,
     page: 1,
     pageSize: 5,
-    addData: "",
-    getMore: true,
+    hasMore: true,
     loadText: "正在加载",
-    loading: true,
+    loading: true
   },
 
   /**
@@ -31,51 +31,33 @@ Page({
     let params = {
       page: this.data.page,
       pageSize: this.data.pageSize
-    }
+    };
     severRequest("getDailyList", params).then(res => {
       this.setData({
         page: this.data.page,
-        wallpaperList: res.data.data,
+        wallpaperList: this.data.wallpaperList.concat(res.data.data),
         total: res.data.data.length,
-        activeIndex: res.data.data.length - 1,
-        loading: false
-      })
-    })
+        loading: false,
+        hasMore: res.data.data.length == 0 ? false : true
+      });
+    });
   },
-  animationFinish(e) {
-    // 分步加载
-    if (e.detail.current == 0 && this.data.getMore) {
-      let params = {
-        page: this.data.page + 1,
-        pageSize: this.data.pageSize
-      }
-      severRequest("getDailyList", params).then(res => {
-        // 获取数据为空，不再请求
-        if (res.data.data.length == 0) {
-          this.setData({
-            getMore: false,
-            loadText: "没有更多了"
-          })
-        } else {
-          this.setData({
-            page: this.data.page + 1,
-            addData: res.data.data,
-            wallpaperList: res.data.data.concat(this.data.wallpaperList),
-            activeIndex: res.data.data.length
-          })
-        }
-      })
+  onReachBottom() {
+    if (this.data.hasMore) {
+      this.setData({
+        page: this.data.page + 1
+      });
+      this.getData();
     }
   },
-
   downImg(e) {
     let data = {
       id: e.currentTarget.dataset.id,
       download: e.currentTarget.dataset.download + 1
-    }
+    };
     severRequest("dailyDownload", data).then(res => {
-      console.log(res.errmsg)
-    })
+      console.log(res.errmsg);
+    });
     wx.downloadFile({
       url: e.currentTarget.dataset.url,
       success: res => {
@@ -87,9 +69,9 @@ Page({
           fail: err => {
             wxToast("保存失败");
           }
-        })
+        });
       }
-    })
+    });
   },
   // 点赞
   praise(e) {
@@ -97,22 +79,22 @@ Page({
       id: e.currentTarget.dataset.id,
       praises: e.currentTarget.dataset.praises + 1,
       index: e.currentTarget.dataset.index
-    }
+    };
     severRequest("dailyPraise", data).then(res => {
       if (res.data == 1) {
         console.log(res.errmsg);
         let praises = `wallpaperList[${data.index}].praises`;
         this.setData({
           [praises]: data.praises
-        })
+        });
       }
-    })
+    });
   },
   // 分享
   share(e) {
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../wallpaperShare/wallpaperShare?id=' + id,
-    })
+      url: "../wallpaperShare/wallpaperShare?id=" + id
+    });
   }
-})
+});

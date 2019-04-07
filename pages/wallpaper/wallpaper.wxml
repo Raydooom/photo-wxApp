@@ -1,33 +1,19 @@
 <import src="/templates/loading.wxml" />
 <template wx:if="{{loading}}" is="page-loading" />
 <block wx:else>
-  <view class="load-text">{{loadText}}</view>
-  <view class="right-load-text">没有更多了</view>
-  <swiper bindanimationfinish="animationFinish" current="{{activeIndex}}">
-    <block wx:for="{{wallpaperList}}" wx:key="{{item.id}}">
-      <swiper-item>
-        <image class="img" src="{{item.img_url}}" mode='aspectFill'></image>
-        <view class="share-btn" bindtap="share" data-id='{{item.id}}'>分享</view>
-        <view class="text-wrap">
-          <view class="date">
-            <text class="day">{{item.day}}</text>
-            <text class="month">{{item.month}}.{{item.year}}</text>
-          </view>
-          <view class="text">{{item.content}}</view>
-          <view class="line"></view>
-          <view class="title">
-            <text>{{item.from}}</text>
-            <view class="handle">
-              <view class="down" bindtap="downImg" data-index="{{index}}" data-download="{{item.download}}" data-id="{{item.id}}" data-url="{{item.img_url}}">
-                <image src="../../assets/icons/down.png"></image>
-              </view>
-              <view class="praise" bindtap="praise" data-index="{{index}}" data-id="{{item.id}}" data-praises="{{item.praises}}">
-                <image mode='' src="../../assets/icons/like_white.png"></image>{{item.praises}}
-              </view>
-            </view>
-          </view>
-        </view>
-      </swiper-item>
-    </block>
-  </swiper>
+  <view class="list" wx:for="{{wallpaperList}}" wx:key="{{item.id}}">
+    <view class="date-bar">
+      <text>{{monthStr[item.month-1]}} {{item.day}}, {{item.year}}</text>
+    </view>
+    <image class="image" src='{{item.img_url}}' mode='widthFix'></image>
+    <view class="text-wrap">
+      <text class="main-text">{{item.content}}</text>
+    </view>
+    <view class="handle-bar">
+      <text class="kind-text">{{item.from}}</text>
+      <view class="praise" bindtap='praise' data-id="{{item.id}}" data-praises="{{item.praises}}" data-index="{{index}}">
+        <image src="../../assets/icons/like.png"></image>{{item.praises}}</view>
+    </view>
+  </view>
+  <view class="loading-text">{{hasMore ? "正在加载" : "我是有底线的"}}</view>
 </block>
