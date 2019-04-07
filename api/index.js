@@ -5,6 +5,7 @@ import Promise from "../utils/external/es6-promise.min";
 const HOST = "https://server.raydom.wang";
 // 接口列表
 const api = {
+  appViewCount: "/api/reportData/appViewCount", // 统计进入app次数
   getBanner: "/api/index/getBanner", // 获取banner
   getKindList: "/api/index/getKindList", // 获取分类列表
   getKindArticle: "/api/index/getKindArticle", // 获取分类下文章列表

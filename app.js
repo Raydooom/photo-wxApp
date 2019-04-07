@@ -1,6 +1,13 @@
-const { severRequest } = require("api/index");
-const { wxPromise } = require("/utils/wxUtils.js");
-const { Promise } = require("/utils/external/es6-promise.min.js");
+const {
+  severRequest,
+  appViewCount
+} = require("api/index");
+const {
+  wxPromise
+} = require("/utils/wxUtils.js");
+const {
+  Promise
+} = require("/utils/external/es6-promise.min.js");
 
 App({
   wxLogin() {
@@ -24,8 +31,13 @@ App({
       });
     });
   },
+  // 访客统计
+  appViewCount() {
+    severRequest("appViewCount")
+  },
   onLaunch() {
     this.wxLogin();
+    this.appViewCount();
   },
   globalData: {
     isLogin: wx.getStorageSync("token") ? true : false
