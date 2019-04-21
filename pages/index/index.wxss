@@ -54,6 +54,7 @@ swiper-item .title {
 }
 
 swiper-item .discription {
+  padding-top: 10rpx;
   font-size: 28rpx;
   color: #fff;
   display: block;

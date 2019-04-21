@@ -22,6 +22,9 @@ App({
             code: loginRes.code,
             userInfo: res.userInfo
           };
+          // 设置用户信息
+          this.userInfo = res.userInfo;
+          console.log(this.userInfo.avatarUrl)
           severRequest("login", data).then(res => {
             this.globalData.isLogin = true;
             wx.setStorageSync("token", res.data);
@@ -34,6 +37,9 @@ App({
   // 访客统计
   appViewCount() {
     severRequest("appViewCount")
+  },
+  userInfo: {
+    avatarUrl: "../../assets/images/default_avatar.jpeg",
   },
   onLaunch() {
     this.wxLogin();

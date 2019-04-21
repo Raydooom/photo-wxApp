@@ -62,6 +62,10 @@ Page({
       wxToast("登录成功");
     })
   },
+  // 评论完成刷新数据 
+  commentEnd(){
+    this.getData();
+  },
   // 点赞
   addPraise(e) {
     if (app.globalData.isLogin) {
@@ -86,7 +90,7 @@ Page({
   },
   // 监听页面滚动
   onPageScroll(e) {
-    if (e.scrollTop < this.data.scrollTop || e.scrollTop < 300) {
+    if (e.scrollTop < 500) {
       this.setData({
         scrollDirection: 0
       })
@@ -95,9 +99,6 @@ Page({
         scrollDirection: 1
       })
     }
-    this.setData({
-      scrollTop: e.scrollTop
-    })
   },
   // 分享统计
   onShareAppMessage(e) {

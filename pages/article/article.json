@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "login-toast": "/components/login/login"
+    "login-toast": "/components/login/login",
+    "comment": "/components/comment/comment"
   }
 }

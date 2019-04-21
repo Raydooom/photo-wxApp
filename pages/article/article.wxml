@@ -1,7 +1,12 @@
 <import src="../../wxParse/wxParse.wxml" />
 
 <import src="/templates/loading.wxml" />
+<!-- 登录弹框 -->
+<login-toast wx:if="{{!isLogin}}" bind:loginSuccess="login"></login-toast>
+<!-- loading -->
 <template wx:if="{{loading}}" is="page-loading" />
+
+<!-- 头图内容 -->
 <view class="article-cover">
   <image mode='aspectFill' wx:if="{{articleDetail.cover_img}}" src="{{articleDetail.cover_img}}"></image>
   <view class="title-warp">
@@ -9,10 +14,13 @@
     <text class="title">{{articleDetail.article_title}}</text>
   </view>
 </view>
+
 <view class="article-warp">
   <view class="guide" wx:if="{{articleDetail.description}}">
     {{articleDetail.description}}
   </view>
+
+  <!-- 评论内容 -->
   <view class="article-main">
     <template is="wxParse" data="{{wxParseData:article.nodes}}" />
   </view>
@@ -20,6 +28,10 @@
     <text class="views">浏览量 {{articleDetail.views}}</text>
     <text>Raydom 发布于 {{articleDetail.create_date}}</text>
   </view>
+  
+  <comment article-id="{{id}}" bind:commentEnd="commentEnd" />
+
+  <!-- 底部操作栏 -->
   <view class="tool-bar {{scrollDirection ? 'active' : ''}}">
     <view class="tool {{articleDetail.isPraise ? 'active' : ''}}" bindtap="addPraise" data-counts="{{articleDetail.praises}}">
       <image src="{{articleDetail.isPraise ? '../../assets/icons/like_active.png' : '../../assets/icons/like.png'}}"></image>
@@ -36,4 +48,3 @@
     </view>
   </view>
 </view>
-<login-toast wx:if="{{!isLogin}}" bind:loginSuccess="login"></login-toast>

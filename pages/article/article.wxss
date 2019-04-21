@@ -25,6 +25,8 @@
   color: #fff;
   display: block;
   opacity: 0.8;
+  margin-bottom: 14rpx;
+  padding-left: 6rpx;
 }
 
 .title-warp .title {
@@ -35,7 +37,7 @@
 }
 
 .article-warp .guide {
-  padding: 40rpx 50rpx 10rpx;
+  padding: 40rpx 30rpx 10rpx;
   font-size: 28rpx;
   line-height: 48rpx;
   color: #666;
@@ -43,7 +45,7 @@
 }
 
 .article-main {
-  padding: 40rpx;
+  padding: 40rpx 30rpx;
 }
 
 .article-main .photo-title {
@@ -63,7 +65,7 @@
 
 .article-main image {
   display: block;
-  width: 100%;
+  width: 100% !important;
   border-radius: 10rpx;
 }
 
@@ -71,8 +73,8 @@
   font-size: 24rpx;
   color: #333;
   text-align: right;
-  padding: 40rpx;
-  padding-bottom: 140rpx;
+  padding: 20rpx;
+  padding-bottom: 40rpx;
   display: flex;
   justify-content: space-between;
 }
@@ -83,19 +85,19 @@
 /*底部操作栏*/
 
 .tool-bar {
+  height: 98rpx;
   position: fixed;
-  bottom: -100rpx;
-  width: 96%;
-  left: 2%;
-  background: rgba(245, 245, 245, 0.95);
+  bottom: -120rpx;
+  width: 100%;
+  left: 0;
+  background: #fff;
   box-shadow: 0 0 10rpx rgba(0, 0, 0, 0.1);
-  border: 1px solid #ededed;
-  border-radius: 10rpx;
   transition: 0.3s bottom ease-out;
+  z-index: 10;
 }
 
 .tool-bar.active {
-  bottom: 10rpx;
+  bottom: 0rpx;
 }
 
 .tool-bar .tool button {
@@ -116,7 +118,7 @@
   text-align: center;
   font-size: 24rpx;
   color: #666;
-  padding: 4rpx 0;
+  padding: 8rpx 0 4rpx;
 }
 
 .tool-bar .tool.active {
